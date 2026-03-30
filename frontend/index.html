@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopCart — Java Spring Boot</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">Shop<span>Cart</span></div>
+      <div class="nav-right">
+        <div class="api-badge offline" id="apiBadge">Spring Boot API</div>
+        <button class="cart-btn" onclick="toggleCartPanel()">
+          🛒 Cart <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="layout">
+      <div>
+        <div class="api-info">
+          <strong>Backend:</strong> Java Spring Boot at
+          <code>http://localhost:8080</code>
+        </div>
+        <div class="section-header">
+          <h2 class="section-title">Products</h2>
+          <div class="filter-tabs">
+            <button
+              class="filter-tab active"
+              onclick="filterProducts('All', this)"
+            >
+              All
+            </button>
+            <button
+              class="filter-tab"
+              onclick="filterProducts('Electronics', this)"
+            >
+              Electronics
+            </button>
+            <button
+              class="filter-tab"
+              onclick="filterProducts('Accessories', this)"
+            >
+              Accessories
+            </button>
+          </div>
+        </div>
+        <div class="products-grid" id="productsGrid">
+          <div
+            style="
+              grid-column: 1/-1;
+              text-align: center;
+              padding: 3rem;
+              color: var(--muted);
+            "
+          >
+            Loading products...
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-panel" id="cartPanel">
+        <div class="cart-header">
+          <div class="cart-title">Your Cart</div>
+          <button class="clear-btn" onclick="clearCart()">Clear all</button>
+        </div>
+        <div class="cart-body" id="cartBody">
+          <div class="cart-empty">
+            <div class="cart-empty-icon">🛒</div>
+            <p>Your cart is empty.</p>
+          </div>
+        </div>
+        <div class="cart-footer">
+          <div class="cart-summary">
+            <div class="summary-row">
+              <span>Items</span><span id="summaryItems">0</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span><span>FREE</span>
+            </div>
+            <div class="summary-total">
+              <span>Total</span><span id="summaryTotal">₹0</span>
+            </div>
+          </div>
+          <button
+            class="checkout-btn"
+            id="checkoutBtn"
+            disabled
+            onclick="checkout()"
+          >
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
